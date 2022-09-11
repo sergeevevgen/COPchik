@@ -15,8 +15,23 @@ namespace WindowsFormsControlLibrary
         public SelectedListBox()
         {
             InitializeComponent();
+            checkedListBox.SelectedIndexChanged += (sender, e) => _event?.Invoke(sender, e);
         }
         private int checkI = -1;
+        private event EventHandler _event;
+
+        public event EventHandler SelectedIndexChanged
+        {
+            add
+            {
+                _event += value;
+            }
+            remove
+            {
+                _event -= value;
+            }
+        }
+        
         public string SelectedElement
         {
             get 
@@ -28,7 +43,10 @@ namespace WindowsFormsControlLibrary
 
                 return checkedListBox.SelectedItem.ToString();
             }
-            set { checkedListBox.SelectedItem = value; }
+            set
+            {
+                checkedListBox.SelectedItem = value;
+            }
         }
 
         private void checkedListBox_SelectedIndexChanged(object sender, EventArgs e)

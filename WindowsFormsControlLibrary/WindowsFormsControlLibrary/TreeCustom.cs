@@ -17,17 +17,15 @@ namespace WindowsFormsControlLibrary
             InitializeComponent();
         }
 
-        private TreeView treeViewCustom;
-
-        private static void CreateTree(List<T> tree)
+        public void CreateTree<T>(List<T> elements) where T : class, new()
         {
-            treeViewCustom.Nodes.Clear();
+            var properties = elements.First().GetType().GetProperties();
+            var fields = elements.First().GetType().GetFields();
+            var i = new List<TreeNode>();
+            foreach (var element in elements)
+            {
+                i.Add(treeView.Nodes.Add(properties[0].GetValue(element).ToString()));
+            }
         }
-
-        public void AddNode()
-        {
-
-        }
-
     }
 }

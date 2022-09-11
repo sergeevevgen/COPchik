@@ -35,7 +35,7 @@
             // 
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(273, 209);
+            this.treeView.Size = new System.Drawing.Size(272, 207);
             this.treeView.TabIndex = 0;
             // 
             // TreeCustom

@@ -15,19 +15,33 @@ namespace WindowsFormsControlLibrary
         public TimePickBox()
         {
             InitializeComponent();
+            dateTimePicker.ValueChanged += (sender, e) => _event?.Invoke(sender, e);
         }
 
-        public DateTime DateFrom = DateTime.MinValue;
-        public DateTime DateTo = DateTime.MaxValue;
+        private event EventHandler _event;
+
+        public event EventHandler SelectedTimeChanged
+        {
+            add
+            {
+                _event += value;
+            }
+            remove
+            {
+                _event -= value;
+            }
+        }
+        public DateTime? DateFrom;
+        public DateTime? DateTo;
         private DateTime TimePrev { get; set; }
         
         public DateTime? TimePicked 
         {
             get
             {
-                if (dateTimePicker.Value < DateFrom || dateTimePicker.Value > DateTo)
+                if (!DateFrom.HasValue || !DateTo.HasValue || dateTimePicker.Value < DateFrom || dateTimePicker.Value > DateTo)
                 {
-                    labelError.Text = $"From {DateFrom} to {DateTo}";
+                    labelError.Text = $"Enter granici";
                     labelError.BackColor = Color.Red;
                     return null;
                 }
@@ -37,12 +51,13 @@ namespace WindowsFormsControlLibrary
             }
             set
             {
-                if (value < DateFrom || value > DateTo)
+                if (!DateFrom.HasValue || !DateTo.HasValue || value < DateFrom || value > DateTo)
                 {  
-                    labelError.Text = $"From {DateFrom} to {DateTo}";
+                    labelError.Text = $"Enter parameters";
                     labelError.BackColor = Color.Red;
                     return;
                 }
+                dateTimePicker.Value = value.Value;
                 labelError.Text = string.Empty;
                 labelError.BackColor = BackColor;
             }
