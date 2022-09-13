@@ -46,20 +46,46 @@ namespace View
             List<Car> cars = new List<Car>();
             Car car = new Car();
             car.VIN = "123XCSADAS23";
-            car.Price = 500000;
-            car.Name = "VW";
+            car.Brand = "VW";
+            car.Model = "Polo";
             cars.Add(car);
             Car car1 = new Car();
             car1.VIN = "453534SFAFAFAF";
-            car1.Price = 300000;
-            car1.Name = "Ford";
+            car1.Brand = "VW";
+            car1.Model = "Polo";
             cars.Add(car1);
             Car car2 = new Car();
             car2.VIN= "676SADAS423";
-            car2.Price = 7999999;
-            car2.Name = "Lamba";
+            car2.Brand = "VW";
+            car2.Model = "Passat";
             cars.Add(car2);
-            treeCustom.CreateTree(cars);
+            Car car3 = new Car();
+            car3.VIN = "asda1231";
+            car3.Brand = "Honda";
+            car3.Model = "Civic";
+            cars.Add(car3);
+            Car car4 = new Car();
+            car4.VIN = "231sfadaghjf";
+            car4.Brand = "Ford";
+            car4.Model = "F-150";
+            cars.Add(car4);
+            Car car5 = new Car();
+            car5.VIN = "tuytrytr1";
+            car5.Brand = "Ford";
+            car5.Model = "Focus";
+            cars.Add(car5);
+            Car car6 = new Car();
+            car6.VIN = "231sfadaghjf";
+            car6.Brand = "Ford";
+            car6.Model = "F-150";
+            cars.Add(car6);
+            treeCustom.CreateTree(cars, new List<string>() { "Brand", "Model", "VIN" });
+        }
+
+        private void button_Click(object sender, EventArgs e)
+        {
+            var car = treeCustom.GetSelectedNode<Car>();
+            MessageBox.Show(car.Brand + " " + car.Model + " " + car.VIN);
         }
     }
 }
