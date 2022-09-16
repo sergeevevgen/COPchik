@@ -79,7 +79,8 @@ namespace View
             car6.Brand = "Ford";
             car6.Model = "F-150";
             cars.Add(car6);
-            treeCustom.CreateTree(cars, new List<string>() { "Brand", "Model", "VIN" });
+            treeCustom.SetConfig(new List<string>() { "Brand", "Model", "VIN" });
+            treeCustom.CreateTree(cars);
         }
 
         private void button_Click(object sender, EventArgs e)

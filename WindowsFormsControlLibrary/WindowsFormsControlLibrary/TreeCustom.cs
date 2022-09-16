@@ -50,11 +50,17 @@ namespace WindowsFormsControlLibrary
             } 
         }
 
-        public void CreateTree<T>(List<T> list, List<string> config) where T : class, new()
+        public void SetConfig(List<string> config)
         {
             if (config == null)
                 throw new NullReferenceException("Add not null config");
             this.config = config;
+        }
+
+        public void CreateTree<T>(List<T> list) where T : class, new()
+        {
+            if (config == null)
+                throw new NullReferenceException("Add not null config");
             if (list == null)
                 throw new NullReferenceException("Add not null list of objects");
 
