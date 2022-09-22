@@ -32,6 +32,9 @@
             this.timePickBox = new WindowsFormsControlLibrary.TimePickBox();
             this.selectedListBox = new WindowsFormsControlLibrary.SelectedListBox();
             this.button = new System.Windows.Forms.Button();
+            this.buttonImage = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // treeCustom
@@ -68,11 +71,42 @@
             this.button.UseVisualStyleBackColor = true;
             this.button.Click += new System.EventHandler(this.button_Click);
             // 
+            // buttonImage
+            // 
+            this.buttonImage.Location = new System.Drawing.Point(35, 170);
+            this.buttonImage.Name = "buttonImage";
+            this.buttonImage.Size = new System.Drawing.Size(75, 23);
+            this.buttonImage.TabIndex = 4;
+            this.buttonImage.Text = "Создать документ с картинкой";
+            this.buttonImage.UseVisualStyleBackColor = true;
+            this.buttonImage.Click += new System.EventHandler(this.buttonImage_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(35, 277);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Получить элемент ";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(35, 222);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Получить элемент ";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // ViewMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonImage);
             this.Controls.Add(this.button);
             this.Controls.Add(this.treeCustom);
             this.Controls.Add(this.timePickBox);
@@ -89,6 +123,9 @@
         private WindowsFormsControlLibrary.TimePickBox timePickBox;
         private WindowsFormsControlLibrary.TreeCustom treeCustom;
         private System.Windows.Forms.Button button;
+        private System.Windows.Forms.Button buttonImage;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsControlLibrary.CustomUnvisualElements;
 
 namespace View
 {
@@ -86,6 +87,14 @@ namespace View
         {
             var car = treeCustom.GetSelectedNode<Car>();
             MessageBox.Show(car.Brand + " " + car.Model + " " + car.VIN);
+        }
+
+        private void buttonImage_Click(object sender, EventArgs e)
+        {
+            List<string> images = new List<string>(){ "E:\\pic3.jpg", "E:\\pic4.jpg", "E:\\pic5.jpg" };
+
+            ComponentExcelImage componentImageExcel = new ComponentExcelImage();
+            componentImageExcel.CreateFile("E:\\aaaa.xls", "Люди", images);
         }
     }
 }
