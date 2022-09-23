@@ -91,37 +91,38 @@ namespace View
 
         private void buttonImage_Click(object sender, EventArgs e)
         {
-            List<string> images = new List<string>(){ "E:\\pic3.jpg", "E:\\pic4.jpg", "E:\\pic5.jpg" };
+            List<string> images = new List<string>(){ "C:\\Of\\pic3.jpg", "C:\\Of\\pic4.jpg", "C:\\Of\\pic5.jpg" };
 
             ComponentExcelImage componentImageExcel = new ComponentExcelImage();
-            componentImageExcel.CreateFile("E:\\ExcelImage.xls", "Люди", images);
+            componentImageExcel.CreateFile("C:\\Of\\ExcelImage.xls", "Люди", images);
         }
 
         private void buttonTable_Click(object sender, EventArgs e)
         {
             var dict = new Dictionary<string, int[]>();
-            var array = new int[] { 2, 3 };
-            var arrayHeader = new List<string>() { "Марка", "Модель", "VIN", "Стоимость" };
-            var arrayHeight = new List<int>() { 20, 30, 20, 20 };
-            var listCars = new List<Car>() { new Car("VW", "Polo", "2XSKDAKDL", 2000000),
-                                                new Car("Ford", "Mustang-1965", "5KALSMC8J", 23230000),
-                                                new Car("Honda", "NSX", "9IQLSMLXZ", 8000000),
-                                                new Car("UAZ", "Patriot", "1AKSLZASQ", 1200000) };
-            dict.Add("Автомобили", array);
+            var arrayHeader = new List<string>() { "Марка", "Модель", "VIN", "Стоимость", "Мощность (л.с)", "Цвет", "Кузов" };
+            var arrayHeight = new List<int>() { 20, 30, 20, 20, 30, 40, 20 };
+            var listCars = new List<Car>() { new Car("VW", "Polo", "2XSKDAKDL", 2000000, 110, "White", "Sedan"),
+                                                new Car("Ford", "Mustang-1965", "5KALSMC8J", 23230000, 223, "Blue", "Coupe"),
+                                                new Car("Honda", "NSX", "9IQLSMLXZ", 8000000, 270, "Red", "Coupe"),
+                                                new Car("UAZ", "Patriot", "1AKSLZASQ", 1200000, 90, "Black", "Off-road") };
+            dict.Add("МиВ", new int[] {1, 2});
+            dict.Add("МиЦ", new int[] {4, 5, 6});
             ComponentExcelCustomizableTable componentExcelCustomizableTable = new ComponentExcelCustomizableTable();
-            componentExcelCustomizableTable.CreateFile<Car>("E:\\Cars.xls", "Автомобили", dict, arrayHeight, arrayHeader, listCars);
+            componentExcelCustomizableTable.CreateFile("C:\\Of\\Cars.xls", "Автомобили", dict, arrayHeight, arrayHeader, listCars);
         }
 
         private void buttonPieChart_Click(object sender, EventArgs e)
         {
             var dict = new Dictionary<string, int>();
-            dict.Add("VW", 40000);
-            dict.Add("Honda", 10000);
-            dict.Add("Ford", 15000);
-            dict.Add("Tesla", 10000);
-            dict.Add("Toyota", 100000);
+            dict.Add("VW", 15);
+            dict.Add("Honda", 5);
+            dict.Add("Ford", 10);
+            dict.Add("Tesla", 12);
+            dict.Add("Toyota", 25);
+            dict.Add("Others", 33);
             ComponentExcelPieChart componentExcelPieChart = new ComponentExcelPieChart();
-            componentExcelPieChart.CreateFile("E:\\companies.xls", "Компании", "Капитализация (%)", dict);
+            componentExcelPieChart.CreateFile("C:\\Of\\companies.xls", "Компании", "Капитализация (%)", dict);
         }
     }
 }

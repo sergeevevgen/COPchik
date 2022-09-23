@@ -50,8 +50,8 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                     y += newImage.Height;
                 }
 
-                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, Excel.XlSaveAsAccessMode.xlExclusive);
-                workBook.Close(true);
+                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, null, null, null, null, Excel.XlSaveAsAccessMode.xlExclusive, null, null, null, null, null);
+                workBook.Close(true, null, null);
                 app.Quit();
 
                 releaseObject(app);

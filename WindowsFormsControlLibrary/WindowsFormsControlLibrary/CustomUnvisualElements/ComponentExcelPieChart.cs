@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,9 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
         {
             if (filename != null && title != null && chartName != null && dictionary != null)
             {
+                if (File.Exists(filename))
+                    File.Delete(filename);
+
                 var app = new Excel.Application();
                 var workBook = app.Workbooks.Add();
                 var workSheet = (Excel.Worksheet)workBook.Worksheets[1];
@@ -45,7 +49,7 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                 foreach (var keyValue in dictionary)
                 {
                     workSheet.Cells[k, startColumnCell] = keyValue.Key;
-                    workSheet.Cells[k, startColumnCell + 1] = keyValue.Value;
+                    workSheet.Cells[k, startColumnCell + 1] = keyValue.Value + "%";
                     k++;
                 }
 
@@ -54,7 +58,7 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                 range.Columns.AutoFit();
 
                 Excel.ChartObjects chartObjs = (Excel.ChartObjects)workSheet.ChartObjects();
-                Excel.ChartObject chartObj = chartObjs.Add(200, 10, 500, 300);
+                Excel.ChartObject chartObj = chartObjs.Add(200, 40, 500, 300);
                 Excel.Chart chart = chartObj.Chart;
                 chart.ChartType = Excel.XlChartType.xlPie;
                 chart.HasTitle = true;
@@ -65,8 +69,8 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
 
                 chart.SetSourceData(range, Excel.XlRowCol.xlColumns);
 
-                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, Excel.XlSaveAsAccessMode.xlExclusive);
-                workBook.Close(true);
+                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, null, null, null, null, Excel.XlSaveAsAccessMode.xlExclusive, null, null, null, null, null);
+                workBook.Close(true, null, null);
                 app.Quit();
 
                 releaseObject(app);

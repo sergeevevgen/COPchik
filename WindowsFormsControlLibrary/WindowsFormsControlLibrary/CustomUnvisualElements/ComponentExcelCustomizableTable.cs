@@ -65,8 +65,8 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
 
                 foreach (var keyValue in mergedCols)
                 {
-                    var range = workSheet.Range[workSheet.Cells[startCell + keyValue.Value[0], columnCellIndex], workSheet.Cells[startCell + keyValue.Value[0] + keyValue.Value.Length - 1, columnCellIndex]].Merge();
-                    range.Value = keyValue.Key;
+                    workSheet.Range[workSheet.Cells[startCell + keyValue.Value[0], columnCellIndex], workSheet.Cells[startCell + keyValue.Value[0] + keyValue.Value.Length - 1, columnCellIndex]].Merge();
+                    workSheet.Range[workSheet.Cells[startCell + keyValue.Value[0], columnCellIndex], workSheet.Cells[startCell + keyValue.Value[0] + keyValue.Value.Length - 1, columnCellIndex]].Value = keyValue.Key;
                 }
 
                 for (int i = 0; i < mtitle.Count; i++)
@@ -86,7 +86,7 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                 {
                     foreach (var prop in properties)
                     {
-                        workSheet.Cells[k, j] = prop.GetValue(element);
+                        workSheet.Cells[k, j] = prop.GetValue(element).ToString();
                         k++;
                     }
                     j++;
@@ -108,8 +108,10 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                 headerRange.Style.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 listRange.Style.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
 
-                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, Excel.XlSaveAsAccessMode.xlExclusive);
-                workBook.Close(true);
+                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, null, null, null, Excel.XlSaveAsAccessMode.xlExclusive, Excel.XlSaveAsAccessMode.xlShared, null, null, null, null);
+                workBook.Close(true, null, null);
+
+                app.Workbooks.Close();
                 app.Quit();
 
                 releaseObject(app);

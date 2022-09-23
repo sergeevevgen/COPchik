@@ -74,9 +74,10 @@
             // 
             // buttonImage
             // 
+            this.buttonImage.AutoSize = true;
             this.buttonImage.Location = new System.Drawing.Point(35, 170);
             this.buttonImage.Name = "buttonImage";
-            this.buttonImage.Size = new System.Drawing.Size(75, 23);
+            this.buttonImage.Size = new System.Drawing.Size(175, 23);
             this.buttonImage.TabIndex = 4;
             this.buttonImage.Text = "Создать документ с картинкой";
             this.buttonImage.UseVisualStyleBackColor = true;
@@ -84,21 +85,23 @@
             // 
             // buttonPieChart
             // 
+            this.buttonPieChart.AutoSize = true;
             this.buttonPieChart.Location = new System.Drawing.Point(35, 277);
             this.buttonPieChart.Name = "buttonPieChart";
-            this.buttonPieChart.Size = new System.Drawing.Size(75, 23);
+            this.buttonPieChart.Size = new System.Drawing.Size(185, 23);
             this.buttonPieChart.TabIndex = 5;
-            this.buttonPieChart.Text = "Получить элемент ";
+            this.buttonPieChart.Text = "Создать документ с диаграммой";
             this.buttonPieChart.UseVisualStyleBackColor = true;
             this.buttonPieChart.Click += new System.EventHandler(this.buttonPieChart_Click);
             // 
             // buttonTable
             // 
+            this.buttonTable.AutoSize = true;
             this.buttonTable.Location = new System.Drawing.Point(35, 222);
             this.buttonTable.Name = "buttonTable";
-            this.buttonTable.Size = new System.Drawing.Size(75, 23);
+            this.buttonTable.Size = new System.Drawing.Size(169, 23);
             this.buttonTable.TabIndex = 6;
-            this.buttonTable.Text = "Получить элемент ";
+            this.buttonTable.Text = "Создать документ с таблицей";
             this.buttonTable.UseVisualStyleBackColor = true;
             this.buttonTable.Click += new System.EventHandler(this.buttonTable_Click);
             // 
@@ -117,6 +120,7 @@
             this.Name = "ViewMain";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

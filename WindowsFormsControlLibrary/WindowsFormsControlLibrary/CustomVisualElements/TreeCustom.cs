@@ -46,7 +46,6 @@ namespace WindowsFormsControlLibrary
                     treeView.Focus();
                     return;
                 }
-                throw new IndexOutOfRangeException();
             } 
         }
 
