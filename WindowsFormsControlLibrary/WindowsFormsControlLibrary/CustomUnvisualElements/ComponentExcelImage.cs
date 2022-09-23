@@ -31,9 +31,8 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
             {
                 if (File.Exists(filename))
                     File.Delete(filename);
-                var missing = System.Reflection.Missing.Value;
                 var app = new Excel.Application();
-                var workBook = app.Workbooks.Add(missing);
+                var workBook = app.Workbooks.Add();
                 var workSheet = (Excel.Worksheet)workBook.Worksheets[1];
 
                 workSheet.Name = title;
@@ -51,8 +50,8 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                     y += newImage.Height;
                 }
 
-                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing, missing);
-                workBook.Close(true, missing, missing);
+                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, Excel.XlSaveAsAccessMode.xlExclusive);
+                workBook.Close(true);
                 app.Quit();
 
                 releaseObject(app);

@@ -24,20 +24,24 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
             InitializeComponent();
         }
 
-        public void CreateFile<T>(string filename, string title, List<int> mergedCols, List<int> colSize, List<string> mtitle, List<T> data)
+        public void CreateFile<T>(string filename, string title, Dictionary<string, int[]> mergedCols, List<int> colSize, List<string> mtitle, List<T> data)
         {
             if (filename != null && title != null && mergedCols != null && colSize != null && mtitle != null
                 && data != null && typeof(T).GetProperties().Length == colSize.Count && typeof(T).GetProperties().Length == mtitle.Count)
             {
                 if (File.Exists(filename))
                     File.Delete(filename);
-                var missing = System.Reflection.Missing.Value;
+                
                 var app = new Excel.Application();
-                var workBook = app.Workbooks.Add(missing);
+                var workBook = app.Workbooks.Add();
                 var workSheet = (Excel.Worksheet)workBook.Worksheets[1];
 
-                workSheet.Name = name;
-                workSheet.Cells[1, 1].Value = name;
+                workSheet.Name = title;
+                workSheet.Cells[1, 5].Value = title;
+                workSheet.Range[workSheet.Cells[1, 5], workSheet.Cells[1, 10]].Merge();
+                workSheet.Range[workSheet.Cells[1, 5], workSheet.Cells[1, 10]].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                workSheet.Range[workSheet.Cells[1, 5], workSheet.Cells[1, 10]].Font.Bold = true;
+                workSheet.Range[workSheet.Cells[1, 5], workSheet.Cells[1, 10]].Font.Size = 24;
 
                 int columnCellIndex = 1;
                 int startCell = 2;
@@ -46,7 +50,7 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
 
                 var tmpList = new List<int>();
 
-                foreach (var value in mergedRows.Values)
+                foreach (var value in mergedCols.Values)
                 {
                     tmpList.AddRange(value);
                 }
@@ -55,66 +59,62 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                 for (int i = 0; i < properties.Length; i++)
                 {
                     if (!tmpList.Contains(i))
-                        xlWorkSheet.Range[xlWorkSheet.Cells[k, columnCellIndex], xlWorkSheet.Cells[k, columnCellIndex + 1]].Merge(misValue);
+                        workSheet.Range[workSheet.Cells[k, columnCellIndex], workSheet.Cells[k, columnCellIndex + 1]].Merge();
                     k++;
                 }
 
-                foreach (var keyValue in mergedRows)
+                foreach (var keyValue in mergedCols)
                 {
-                    var range = xlWorkSheet.Range[xlWorkSheet.Cells[startCell + keyValue.Value[0], columnCellIndex], xlWorkSheet.Cells[startCell + keyValue.Value[0] + keyValue.Value.Length - 1, columnCellIndex]];
-                    range.Merge(misValue);
+                    var range = workSheet.Range[workSheet.Cells[startCell + keyValue.Value[0], columnCellIndex], workSheet.Cells[startCell + keyValue.Value[0] + keyValue.Value.Length - 1, columnCellIndex]].Merge();
                     range.Value = keyValue.Key;
                 }
 
-                for (int i = 0; i < tableHeader.Length; i++)
+                for (int i = 0; i < mtitle.Count; i++)
                 {
                     if (!tmpList.Contains(i))
-                        xlWorkSheet.Cells[i + startCell, columnCellIndex] = tableHeader[i];
+                        workSheet.Cells[i + startCell, columnCellIndex] = mtitle[i];
                     else
-                        xlWorkSheet.Cells[i + startCell, columnCellIndex + 1] = tableHeader[i];
+                        workSheet.Cells[i + startCell, columnCellIndex + 1] = mtitle[i];
                 }
 
-                var headerRange = xlWorkSheet.Range[xlWorkSheet.Cells[startCell, columnCellIndex], xlWorkSheet.Cells[startCell + tableHeader.Length - 1, columnCellIndex + 1]];
+                var headerRange = workSheet.Range[workSheet.Cells[startCell, columnCellIndex], workSheet.Cells[startCell + mtitle.Count - 1, columnCellIndex + 1]];
                 headerRange.Font.Bold = true;
 
                 int j = columnCellIndex + 2;
                 k = startCell;
-                foreach (var person in list)
+                foreach (var element in data)
                 {
                     foreach (var prop in properties)
                     {
-                        xlWorkSheet.Cells[k, j] = prop.GetValue(person);
+                        workSheet.Cells[k, j] = prop.GetValue(element);
                         k++;
                     }
                     j++;
                     k = startCell;
                 }
 
-                var listRange = xlWorkSheet.Range[xlWorkSheet.Cells[startCell, columnCellIndex + 2], xlWorkSheet.Cells[startCell + properties.Length - 1, columnCellIndex + list.Count + 1]];
+                var listRange = workSheet.Range[workSheet.Cells[startCell, columnCellIndex + 2], workSheet.Cells[startCell + properties.Length - 1, columnCellIndex + data.Count + 1]];
 
-                var tableRange = xlWorkSheet.Range[xlWorkSheet.Cells[startCell, columnCellIndex], xlWorkSheet.Cells[startCell + properties.Length - 1, columnCellIndex + list.Count + 1]];
-                //tableRange.BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick, Excel.XlColorIndex.xlColorIndexAutomatic);
+                var tableRange = workSheet.Range[workSheet.Cells[startCell, columnCellIndex], workSheet.Cells[startCell + properties.Length - 1, columnCellIndex + data.Count + 1]];
                 tableRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
                 tableRange.Style.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 tableRange.Columns.AutoFit();
 
-                for (int i = 0; i < heightRows.Length; i++)
+                for (int i = 0; i < colSize.Count; i++)
                 {
-                    xlWorkSheet.Cells[i + startCell, columnCellIndex].RowHeight = heightRows[i];
+                    workSheet.Cells[i + startCell, columnCellIndex].RowHeight = colSize[i];
                 }
 
                 headerRange.Style.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 listRange.Style.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
 
-                xlWorkBook.SaveAs(fileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlWorkBook.Close(true, misValue, misValue);
+                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, Excel.XlSaveAsAccessMode.xlExclusive);
+                workBook.Close(true);
+                app.Quit();
 
-                xlApp.Workbooks.Close();
-                xlApp.Quit();
-
-                releaseObject(xlApp);
-                releaseObject(xlWorkBook);
-                releaseObject(xlWorkSheet);
+                releaseObject(app);
+                releaseObject(workBook);
+                releaseObject(workSheet);
             }
         }
 

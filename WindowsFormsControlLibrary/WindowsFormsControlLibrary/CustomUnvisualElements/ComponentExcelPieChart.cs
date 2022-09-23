@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsControlLibrary.CustomUnvisualElements
 {
@@ -22,17 +23,20 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
             InitializeComponent();
         }
 
-        public void CreateFile(string fileName, string name, string chartName, LegendLocation location, Dictionary<string, int> dictionary)
+        public void CreateFile(string filename, string title, string chartName, Dictionary<string, int> dictionary)
         {
-            if (fileName != null && name != null && chartName != null && dictionary != null)
+            if (filename != null && title != null && chartName != null && dictionary != null)
             {
-                var misValue = System.Reflection.Missing.Value;
-                var xlApp = new Excel.Application();
-                var xlWorkBook = xlApp.Workbooks.Add(misValue);
-                var xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                var app = new Excel.Application();
+                var workBook = app.Workbooks.Add();
+                var workSheet = (Excel.Worksheet)workBook.Worksheets[1];
 
-                xlWorkSheet.Name = name;
-                xlWorkSheet.Cells[1, 1].Value = name;
+                workSheet.Name = title;
+                workSheet.Cells[1, 5].Value = title;
+                workSheet.Range[workSheet.Cells[1, 5], workSheet.Cells[1, 10]].Merge();
+                workSheet.Range[workSheet.Cells[1, 5], workSheet.Cells[1, 10]].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                workSheet.Range[workSheet.Cells[1, 5], workSheet.Cells[1, 10]].Font.Bold = true;
+                workSheet.Range[workSheet.Cells[1, 5], workSheet.Cells[1, 10]].Font.Size = 24;
 
                 int startColumnCell = 1;
                 int startRowCell = 2;
@@ -40,48 +44,34 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                 int k = startRowCell;
                 foreach (var keyValue in dictionary)
                 {
-                    xlWorkSheet.Cells[k, startColumnCell] = keyValue.Key;
-                    xlWorkSheet.Cells[k, startColumnCell + 1] = keyValue.Value;
+                    workSheet.Cells[k, startColumnCell] = keyValue.Key;
+                    workSheet.Cells[k, startColumnCell + 1] = keyValue.Value;
                     k++;
                 }
 
-                var range = xlWorkSheet.Range[xlWorkSheet.Cells[startRowCell, startColumnCell], xlWorkSheet.Cells[startRowCell + dictionary.Count - 1, startColumnCell + 1]];
+                var range = workSheet.Range[workSheet.Cells[startRowCell, startColumnCell], workSheet.Cells[startRowCell + dictionary.Count - 1, startColumnCell + 1]];
                 range.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
                 range.Columns.AutoFit();
 
-                Excel.ChartObjects chartObjs = (Excel.ChartObjects)xlWorkSheet.ChartObjects();
+                Excel.ChartObjects chartObjs = (Excel.ChartObjects)workSheet.ChartObjects();
                 Excel.ChartObject chartObj = chartObjs.Add(200, 10, 500, 300);
-                Excel.Chart xlChart = chartObj.Chart;
-                xlChart.ChartType = Excel.XlChartType.xlPie;
-                xlChart.HasTitle = true;
-                xlChart.ChartTitle.Text = chartName;
-                xlChart.HasLegend = true;
+                Excel.Chart chart = chartObj.Chart;
+                chart.ChartType = Excel.XlChartType.xlPie;
+                chart.HasTitle = true;
+                chart.ChartTitle.Text = chartName;
+                chart.HasLegend = true;
 
-                switch (location)
-                {
-                    case LegendLocation.Up:
-                        xlChart.Legend.Position = Excel.XlLegendPosition.xlLegendPositionTop;
-                        break;
-                    case LegendLocation.Down:
-                        xlChart.Legend.Position = Excel.XlLegendPosition.xlLegendPositionBottom;
-                        break;
-                    case LegendLocation.Left:
-                        xlChart.Legend.Position = Excel.XlLegendPosition.xlLegendPositionLeft;
-                        break;
-                    case LegendLocation.Right:
-                        xlChart.Legend.Position = Excel.XlLegendPosition.xlLegendPositionRight;
-                        break;
-                }
+                chart.Legend.Position = Excel.XlLegendPosition.xlLegendPositionBottom;
 
-                xlChart.SetSourceData(range, Excel.XlRowCol.xlColumns);
+                chart.SetSourceData(range, Excel.XlRowCol.xlColumns);
 
-                xlWorkBook.SaveAs(fileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlWorkBook.Close(true, misValue, misValue);
-                xlApp.Quit();
+                workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, Excel.XlSaveAsAccessMode.xlExclusive);
+                workBook.Close(true);
+                app.Quit();
 
-                releaseObject(xlApp);
-                releaseObject(xlWorkBook);
-                releaseObject(xlWorkSheet);
+                releaseObject(app);
+                releaseObject(workBook);
+                releaseObject(workSheet);
             }
         }
 
@@ -92,7 +82,7 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
                 obj = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 obj = null;
             }
