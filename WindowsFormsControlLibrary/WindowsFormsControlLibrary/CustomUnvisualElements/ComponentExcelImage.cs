@@ -54,7 +54,28 @@ namespace WindowsFormsControlLibrary.CustomUnvisualElements
                 workBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing, missing);
                 workBook.Close(true, missing, missing);
                 app.Quit();
+
+                releaseObject(app);
+                releaseObject(workBook);
+                releaseObject(workSheet);
             }
 		}
-	}
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception)
+            {
+                obj = null;
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+    }
 }

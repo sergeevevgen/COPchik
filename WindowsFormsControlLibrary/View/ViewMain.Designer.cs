@@ -33,14 +33,15 @@
             this.selectedListBox = new WindowsFormsControlLibrary.SelectedListBox();
             this.button = new System.Windows.Forms.Button();
             this.buttonImage = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonPieChart = new System.Windows.Forms.Button();
+            this.buttonTable = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // treeCustom
             // 
             this.treeCustom.Location = new System.Drawing.Point(431, 35);
             this.treeCustom.Name = "treeCustom";
+            this.treeCustom.SelectedIndex = -1;
             this.treeCustom.Size = new System.Drawing.Size(275, 210);
             this.treeCustom.TabIndex = 2;
             // 
@@ -81,31 +82,33 @@
             this.buttonImage.UseVisualStyleBackColor = true;
             this.buttonImage.Click += new System.EventHandler(this.buttonImage_Click);
             // 
-            // button2
+            // buttonPieChart
             // 
-            this.button2.Location = new System.Drawing.Point(35, 277);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Получить элемент ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonPieChart.Location = new System.Drawing.Point(35, 277);
+            this.buttonPieChart.Name = "buttonPieChart";
+            this.buttonPieChart.Size = new System.Drawing.Size(75, 23);
+            this.buttonPieChart.TabIndex = 5;
+            this.buttonPieChart.Text = "Получить элемент ";
+            this.buttonPieChart.UseVisualStyleBackColor = true;
+            this.buttonPieChart.Click += new System.EventHandler(this.buttonPieChart_Click);
             // 
-            // button3
+            // buttonTable
             // 
-            this.button3.Location = new System.Drawing.Point(35, 222);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Получить элемент ";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonTable.Location = new System.Drawing.Point(35, 222);
+            this.buttonTable.Name = "buttonTable";
+            this.buttonTable.Size = new System.Drawing.Size(75, 23);
+            this.buttonTable.TabIndex = 6;
+            this.buttonTable.Text = "Получить элемент ";
+            this.buttonTable.UseVisualStyleBackColor = true;
+            this.buttonTable.Click += new System.EventHandler(this.buttonTable_Click);
             // 
             // ViewMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonTable);
+            this.Controls.Add(this.buttonPieChart);
             this.Controls.Add(this.buttonImage);
             this.Controls.Add(this.button);
             this.Controls.Add(this.treeCustom);
@@ -124,8 +127,8 @@
         private WindowsFormsControlLibrary.TreeCustom treeCustom;
         private System.Windows.Forms.Button button;
         private System.Windows.Forms.Button buttonImage;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonPieChart;
+        private System.Windows.Forms.Button buttonTable;
     }
 }
 
