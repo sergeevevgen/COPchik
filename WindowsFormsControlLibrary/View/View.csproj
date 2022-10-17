@@ -20,6 +20,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="lab1COP">
+      <HintPath>C:\Users\zheny\Desktop\lab1COP.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsFormsControlLibrary">
+      <HintPath>..\WindowsFormsControlLibrary\bin\Debug\WindowsFormsControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsFormsControlLibraryKutygin">
+      <HintPath>..\WindowsFormsControlLibraryKutygin\bin\Debug\WindowsFormsControlLibraryKutygin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Form.cs">
       <SubType>Form</SubType>
     </Compile>

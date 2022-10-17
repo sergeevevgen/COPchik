@@ -3,31 +3,31 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Общие сведения об этой сборке предоставляются следующим набором
-// набора атрибутов. Измените значения этих атрибутов для изменения сведений,
-// связанных со сборкой.
-[assembly: AssemblyTitle("FormMain")]
+// набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
+// связанные со сборкой.
+[assembly: AssemblyTitle("WindowsFormsControlLibraryKutygin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FormMain")]
+[assembly: AssemblyProduct("WindowsFormsControlLibraryKutygin")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Установка значения False для параметра ComVisible делает типы в этой сборке невидимыми
 // для компонентов COM. Если необходимо обратиться к типу в этой сборке через
-// COM, следует установить атрибут ComVisible в TRUE для этого типа.
+// компонента COM, задайте для атрибута ComVisible этого типа значение TRUE.
 [assembly: ComVisible(false)]
 
-// Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("73cca14b-d3b8-4172-8cee-fc7934c8d7d3")]
+// Следующий идентификатор GUID представляет идентификатор typelib, если этот проект доступен через COM
+[assembly: Guid("6c903b6d-336f-4712-af3c-ee04537877b7")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
 //      Основной номер версии
 //      Дополнительный номер версии
 //      Номер сборки
-//      Редакция
+//      Номер редакции
 //
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
