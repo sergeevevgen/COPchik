@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsControlLibraryKutygin.VisualComponents;
 
 namespace View
 {
@@ -45,7 +46,7 @@ namespace View
             //toolStripItems[1] = menuItemUnits;
 
             //ControlsStripMenuItem.DropDownItems.AddRange(toolStripItems);
-            DropDownListControl 
+            DropDownListControl d = new DropDownListControl();
             return dic;
             
         }
