@@ -21,13 +21,13 @@
 
   <ItemGroup>
     <Reference Include="lab1COP">
-      <HintPath>C:\Users\zheny\Desktop\lab1COP.dll</HintPath>
+      <HintPath>bin\Debug\net6.0-windows\lab1COP.dll</HintPath>
     </Reference>
     <Reference Include="WindowsFormsControlLibrary">
-      <HintPath>..\WindowsFormsControlLibrary\bin\Debug\WindowsFormsControlLibrary.dll</HintPath>
+      <HintPath>bin\Debug\net6.0-windows\WindowsFormsControlLibrary.dll</HintPath>
     </Reference>
     <Reference Include="WindowsFormsControlLibraryKutygin">
-      <HintPath>..\WindowsFormsControlLibraryKutygin\bin\Debug\WindowsFormsControlLibraryKutygin.dll</HintPath>
+      <HintPath>bin\Debug\net6.0-windows\WindowsFormsControlLibraryKutygin.dll</HintPath>
     </Reference>
   </ItemGroup>
 
