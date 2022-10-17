@@ -3,13 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsControlLibrary", "WindowsFormsControlLibrary\WindowsFormsControlLibrary.csproj", "{97E04484-AC69-493E-ACC6-408A06F92710}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseLogic", "DataBaseLogic\DataBaseLogic.csproj", "{1F3159EB-D616-4F09-90F2-8BFA263F473F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "View\View.csproj", "{7EE3A22E-3E43-40A4-B604-CBC0E4A7D36F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsControlLibraryKutygin", "WindowsFormsControlLibraryKutygin\WindowsFormsControlLibraryKutygin.csproj", "{6C903B6D-336F-4712-AF3C-EE04537877B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{97E04484-AC69-493E-ACC6-408A06F92710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97E04484-AC69-493E-ACC6-408A06F92710}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97E04484-AC69-493E-ACC6-408A06F92710}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97E04484-AC69-493E-ACC6-408A06F92710}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F3159EB-D616-4F09-90F2-8BFA263F473F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F3159EB-D616-4F09-90F2-8BFA263F473F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F3159EB-D616-4F09-90F2-8BFA263F473F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,10 +21,6 @@ Global
 		{7EE3A22E-3E43-40A4-B604-CBC0E4A7D36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EE3A22E-3E43-40A4-B604-CBC0E4A7D36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EE3A22E-3E43-40A4-B604-CBC0E4A7D36F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C903B6D-336F-4712-AF3C-EE04537877B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C903B6D-336F-4712-AF3C-EE04537877B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C903B6D-336F-4712-AF3C-EE04537877B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C903B6D-336F-4712-AF3C-EE04537877B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
