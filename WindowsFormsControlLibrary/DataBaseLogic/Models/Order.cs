@@ -15,8 +15,8 @@ namespace DataBaseLogic.Models
         public string CustomerFIO { get; set; }
         [Required]
         public byte[] Image { get; set; }
-        [ForeignKey("OrderId")]
-        public virtual List<Product> Products { get; set; }
+        [Required]
+        public string Product { get; set; }
         [Required]
         public string Mail { get; set; }
     }

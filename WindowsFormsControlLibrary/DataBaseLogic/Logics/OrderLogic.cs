@@ -14,9 +14,9 @@ namespace DataBaseLogic.Logics
     {
         private readonly OrderStorage _orderStorage;
 
-        public OrderLogic(OrderStorage orderStorage)
+        public OrderLogic()
         {
-            _orderStorage = orderStorage;
+            _orderStorage = new OrderStorage();
         }
 
         public void CreateOrUpdate(OrderBindingModel model)

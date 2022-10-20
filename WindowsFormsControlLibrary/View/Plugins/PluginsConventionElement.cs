@@ -8,6 +8,6 @@ namespace View.Plugins
 {
     public class PluginsConventionElement
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

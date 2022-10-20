@@ -13,9 +13,9 @@ namespace DataBaseLogic.Logics
     {
         private readonly ProductStorage _storage;
 
-        public ProductLogic(ProductStorage storage)
+        public ProductLogic()
         {
-            _storage = storage;
+            _storage = new ProductStorage();
         }
 
         public void CreateOrUpdate(ProductBindingModel model)

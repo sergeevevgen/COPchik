@@ -13,10 +13,10 @@ namespace DataBaseLogic.ViewModels
         public int Id { get; set; }
         [DisplayName("ФИО покупателя")]
         public string CustomerFIO { get; set; }
-
+        [DisplayName("Изображение")]
         public byte[] Image { get; set; }
         [DisplayName("Выбранный товар")]
-        public Dictionary<string, int> Products { get; set; }
+        public string Product { get; set; }
         [DisplayName("Почта")]
         public string Mail { get; set; }
     }

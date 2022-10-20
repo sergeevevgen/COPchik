@@ -10,9 +10,7 @@ namespace DataBaseLogic.Models
     public class Product
     {
         public int Id { get; set; }
-        public int OrderId { get; set; }
         [Required]
         public string Name { get; set; }
-        public virtual Order Order { get; set; }
     }
 }

@@ -1,18 +1,16 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using View.Plugins;
 
-namespace DataBaseLogic.BindingModels
+namespace View.PluginsImplements
 {
-    public class OrderBindingModel
+    public class OrderConventionElement : PluginsConventionElement
     {
-        public int? Id { get; set; }
         public string CustomerFIO { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
         public string Product { get; set; }
         public string Mail { get; set; }
     }

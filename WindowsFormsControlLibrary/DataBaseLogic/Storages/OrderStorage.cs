@@ -36,7 +36,6 @@ namespace DataBaseLogic.Storages
             }
             using var context = new InternetShopDatabase();
             var order = context.Orders
-                .Include(rec => rec.Products)
                 .FirstOrDefault(rec => rec.Id == model.Id);
             return order != null ? CreateModel(order) : null;
         }
@@ -49,7 +48,6 @@ namespace DataBaseLogic.Storages
             }
             using var context = new InternetShopDatabase();
             return context.Orders
-                .Include(rec => rec.Products)
                 .Where(rec => rec.Id.Equals(model.Id))
                 .ToList()
                 .Select(CreateModel)
@@ -60,7 +58,6 @@ namespace DataBaseLogic.Storages
         {
             using var context = new InternetShopDatabase();
             return context.Orders
-                .Include(rec => rec.Products)
                 .ToList()
                 .Select(CreateModel)
                 .ToList();
@@ -110,6 +107,7 @@ namespace DataBaseLogic.Storages
         {
             order.CustomerFIO = model.CustomerFIO;
             order.Image = model.Image;
+            order.Product = model.Product;
             order.Mail = model.Mail;
             return order;
         }
@@ -121,10 +119,8 @@ namespace DataBaseLogic.Storages
                 Id = order.Id,
                 CustomerFIO = order.CustomerFIO,
                 Image = order.Image,
-                Mail = order.Mail,
-                Products = order.Products
-                    .ToDictionary(rec => rec.Name,
-                    rec => rec.Id)
+                Product = order.Product,
+                Mail = order.Mail
             };
         }
     }
