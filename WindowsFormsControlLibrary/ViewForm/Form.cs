@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lab1COP.Components;
 
 namespace View
 {
@@ -46,6 +47,7 @@ namespace View
             //toolStripItems[1] = menuItemUnits;
 
             //ControlsStripMenuItem.DropDownItems.AddRange(toolStripItems);
+            DropDownListControl d = new DropDownListControl();
             return dic;
             
         }

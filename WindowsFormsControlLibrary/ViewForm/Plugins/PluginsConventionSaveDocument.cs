@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace View.Plugins.PluginsImplements
+namespace View.Plugins
 {
-    public class PluginsConventionDocImages : PluginsConventionSaveDocument
+    public class PluginsConventionSaveDocument
     {
+        public string FileName { get; set; }
     }
 }

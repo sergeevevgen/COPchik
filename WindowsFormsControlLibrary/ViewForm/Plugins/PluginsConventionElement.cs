@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace View.Plugins.PluginsImplements
+namespace View.Plugins
 {
-    public class PluginsConventionPdfChart : PluginsConventionSaveDocument
+    public class PluginsConventionElement
     {
+        public Guid Id { get; set; }
     }
 }
