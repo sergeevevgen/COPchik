@@ -22,6 +22,48 @@ namespace View.PluginsImplements
             tableView = new OutputComponent();
             orderLogic = new OrderLogic();
             productLogic = new ProductLogic();
+            List<DataGridViewColumn> columns = new List<DataGridViewColumn>();
+            columns.Add(new DataGridViewColumn()
+            {
+                HeaderText = "Id",
+                Width = 10,
+                Visible = false,
+                DataPropertyName = "Id"
+            });
+            columns.Add(new DataGridViewColumn()
+            {
+                HeaderText = "CustomerFIO",
+                Width = 50,
+                Visible = true,
+                DataPropertyName = "CustomerFIO",
+            });
+            columns.Add(new DataGridViewColumn()
+            {
+                HeaderText = "Image",
+                Width = 50,
+                Visible = true,
+                DataPropertyName = "Image",
+            });
+            columns.Add(new DataGridViewColumn()
+            {
+                HeaderText = "Product",
+                Width = 50,
+                Visible = true,
+                DataPropertyName = "Product",
+            });
+            columns.Add(new DataGridViewColumn()
+            {
+                HeaderText = "Mail",
+                Width = 50,
+                Visible = true,
+                DataPropertyName = "Mail",
+            });
+            tableView.ConfigureDataGridView(columns);
+            //var list = new List<ProductBindingModel>() { new ProductBindingModel() { Name = "Говяжий фарш"}, new ProductBindingModel() { Name = "бургер" } };
+            //foreach(var item in list)
+            //{
+            //    productLogic.CreateOrUpdate(item);
+            //}
             ReloadData();
         }
 
@@ -29,20 +71,7 @@ namespace View.PluginsImplements
 
         public UserControl GetControl => tableView;
 
-        PluginsConventionElement IPluginsConvention.GetElement => Transform();
-
-        private PluginsConventionElement Transform()
-        {
-            var el = tableView.GetSelectedObject<OrderViewModel>();
-            return new OrderConventionElement()
-            {
-                Id = el.Id,
-                CustomerFIO = el.CustomerFIO,
-                Mail = el.Mail,
-                Product = el.Product,
-                Image = el.Image.ToString()
-            };
-        }
+        PluginsConventionElement IPluginsConvention.GetElement => tableView.GetSelectedObject<PluginsConventionElement>();
 
         public bool CreateChartDocument(PluginsConventionSaveDocument saveDocument)
         {
@@ -62,6 +91,7 @@ namespace View.PluginsImplements
         public bool DeleteElement(PluginsConventionElement element)
         {
             orderLogic.Delete(new OrderBindingModel() { Id = element.Id });
+            ReloadData();
             return true;
         }
 
@@ -81,44 +111,6 @@ namespace View.PluginsImplements
             var data = orderLogic.Read(null);
             if (data.Count != 0)
             {
-                //var list = new List<DataGridViewColumn>();
-                //list.Add(new DataGridViewColumn()
-                //{
-                //    HeaderText = 
-                //})
-                //for(int i = 0; i < data.Count; i++)
-                //{
-                //    list.Add(new DataGridViewColumn()
-                //    {
-                //        He
-                //    })
-                //}
-                var element = data[0];
-                List<DataGridViewColumn> columns = new List<DataGridViewColumn>();
-                foreach (var prop in element.GetType().GetProperties())
-                {
-                    if (prop.Name.Equals("Id") || prop.Name.Equals("id"))
-                    {
-                        columns.Add(new DataGridViewColumn()
-                        {
-                            HeaderText = prop.Name,
-                            Width = 200,
-                            Visible = false,
-                            DataPropertyName = prop.Name
-                        });
-                    }
-                    else
-                    {
-                        columns.Add(new DataGridViewColumn()
-                        {
-                            HeaderText = prop.Name,
-                            Width = 200,
-                            Visible = true,
-                            DataPropertyName = prop.Name
-                        });
-                    }
-                }
-                tableView.ConfigureDataGridView(columns);
                 tableView.FillDataGrid(data);
             }
         }

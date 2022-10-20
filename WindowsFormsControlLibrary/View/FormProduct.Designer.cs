@@ -28,39 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewUnits = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnits)).BeginInit();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewUnits
+            // dataGridView
             // 
-            this.dataGridViewUnits.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUnits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewUnits.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewUnits.Name = "dataGridViewUnits";
-            this.dataGridViewUnits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUnits.Size = new System.Drawing.Size(800, 450);
-            this.dataGridViewUnits.TabIndex = 0;
-            this.dataGridViewUnits.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnits_CellEndEdit);
-            this.dataGridViewUnits.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewUnits_KeyDown);
+            this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(800, 450);
+            this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
+            this.dataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyDown);
             // 
             // FormUnits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridViewUnits);
-            this.Name = "FormUnits";
-            this.Text = "Единицы измерения";
+            this.Controls.Add(this.dataGridView);
+            this.Name = "FormProduct";
+            this.Text = "Продукты";
             this.Load += new System.EventHandler(this.FormUnits_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewUnits;
+        private System.Windows.Forms.DataGridView dataGridView;
     }
 }

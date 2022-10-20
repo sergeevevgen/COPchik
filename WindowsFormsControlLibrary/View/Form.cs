@@ -166,14 +166,14 @@ namespace View
         {
             using (var dialog = new SaveFileDialog { Filter = "pdf|*.pdf" })
             {
-                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateTableDocument(new
-                    PluginsConventionSaveDocument()
+                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateTableDocument(
+                    new PluginsConventionSaveDocument()
                 {
                     FileName = dialog.FileName
                 }))
                 {
                     MessageBox.Show("Документ сохранен", "Создание документа",
-        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -182,12 +182,13 @@ namespace View
                 }
             }
         }
+
         private void CreateChartDoc()
         {
             using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xls" })
             {
-                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateChartDocument(new
-                    PluginsConventionSaveDocument()
+                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateChartDocument(
+                    new PluginsConventionSaveDocument()
                 {
                     FileName = dialog.FileName
                 }))
