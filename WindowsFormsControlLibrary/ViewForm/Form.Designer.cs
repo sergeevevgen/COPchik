@@ -139,13 +139,13 @@
             // 
             // Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
             this.Controls.Add(this.panelControl);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
-            this.Name = "FormMain";
+            this.Name = "Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главная форма";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -172,3 +172,4 @@
         private System.Windows.Forms.ToolStripMenuItem DelElementToolStripMenuItem;
     }
 }
+

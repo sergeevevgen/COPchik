@@ -8,9 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsControlLibraryKutygin.VisualComponents;
 using lab1COP.Components;
-using View.PluginsImplements;
 
 namespace View
 {
@@ -34,34 +32,34 @@ namespace View
             // Пример: panelControl.Controls.Clear(); panelControl.Controls.Add(ctrl);
 
             var dic = new Dictionary<string, IPluginsConvention>();
-            var mainPlugin = new MainPluginConvention();
-            dic.Add(mainPlugin.PluginName, mainPlugin);
+            //var mainPlugin = new MainPluginConvention();
+            //dic.Add(mainPlugin.PluginName, mainPlugin);
 
-            ToolStripItem[] toolStripItems = new ToolStripItem[2];
-            ToolStripMenuItem menuItemOrders = new ToolStripMenuItem();
-            menuItemOrders.Text = mainPlugin.PluginName;
-            menuItemOrders.Click += MenuItemOrders_Click;
-            toolStripItems[0] = menuItemOrders;
+            //System.Windows.Forms.ToolStripItem[] toolStripItems = new System.Windows.Forms.ToolStripItem[2];
+            //ToolStripMenuItem menuItemProducts = new ToolStripMenuItem();
+            //menuItemProducts.Text = mainPlugin.PluginName;
+            //menuItemProducts.Click += MenuItemProducts_Click;
+            //toolStripItems[0] = menuItemProducts;
 
-            ToolStripMenuItem menuItemProducts = new ToolStripMenuItem();
-            menuItemProducts.Text = "Продукты";
-            menuItemProducts.Click += MenuItemProducts_Click;
-            toolStripItems[1] = menuItemProducts;
+            //ToolStripMenuItem menuItemUnits = new ToolStripMenuItem();
+            //menuItemUnits.Text = "Единицы измерения";
+            //menuItemUnits.Click += MenuItemUnits_Click;
+            //toolStripItems[1] = menuItemUnits;
 
             //ControlsStripMenuItem.DropDownItems.AddRange(toolStripItems);
             DropDownListControl d = new DropDownListControl();
             return dic;
-
+            
         }
+        private void MenuItemUnits_Click(object sender, EventArgs e)
+        {
+            //FormUnits formUnits = new FormUnits();
+            //formUnits.ShowDialog();
+        }
+
         private void MenuItemProducts_Click(object sender, EventArgs e)
         {
-            FormProduct formproduct = new FormProduct();
-            formproduct.ShowDialog();
-        }
-
-        private void MenuItemOrders_Click(object sender, EventArgs e)
-        {
-            _selectedPlugin = "Заказы";
+            _selectedPlugin = "Продукты";
             panelControl.Controls.Clear();
             panelControl.Controls.Add(_plugins[_selectedPlugin].GetControl);
             panelControl.Controls[0].Dock = DockStyle.Fill;
@@ -108,14 +106,13 @@ namespace View
                 _plugins[_selectedPlugin].ReloadData();
             }
         }
-
         private void UpdateElement()
         {
             var element = _plugins[_selectedPlugin].GetElement;
             if (element == null)
             {
                 MessageBox.Show("Нет выбранного элемента", "Ошибка",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             var form = _plugins[_selectedPlugin].GetForm(element);
@@ -124,11 +121,10 @@ namespace View
                 _plugins[_selectedPlugin].ReloadData();
             }
         }
-
         private void DeleteElement()
         {
             if (MessageBox.Show("Удалить выбранный элемент", "Удаление",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+           MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 return;
             }
@@ -136,7 +132,7 @@ namespace View
             if (element == null)
             {
                 MessageBox.Show("Нет выбранного элемента", "Ошибка",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (_plugins[_selectedPlugin].DeleteElement(element))
@@ -168,14 +164,14 @@ namespace View
         {
             using (var dialog = new SaveFileDialog { Filter = "pdf|*.pdf" })
             {
-                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateTableDocument(
-                    new PluginsConventionSaveDocument()
+                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateTableDocument(new
+                    PluginsConventionSaveDocument()
                 {
                     FileName = dialog.FileName
                 }))
                 {
                     MessageBox.Show("Документ сохранен", "Создание документа",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -184,19 +180,18 @@ namespace View
                 }
             }
         }
-
         private void CreateChartDoc()
         {
             using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xls" })
             {
-                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateChartDocument(
-                    new PluginsConventionSaveDocument()
+                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateChartDocument(new
+                    PluginsConventionSaveDocument()
                 {
                     FileName = dialog.FileName
                 }))
                 {
                     MessageBox.Show("Документ сохранен", "Создание документа",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -206,16 +201,16 @@ namespace View
             }
         }
         private void AddElementToolStripMenuItem_Click(object sender, EventArgs e) =>
-        AddNewElement();
+       AddNewElement();
         private void UpdElementToolStripMenuItem_Click(object sender, EventArgs e) =>
-        UpdateElement();
+       UpdateElement();
         private void DelElementToolStripMenuItem_Click(object sender, EventArgs e) =>
-        DeleteElement();
+       DeleteElement();
         private void SimpleDocToolStripMenuItem_Click(object sender, EventArgs e) =>
-        CreateSimpleDoc();
+       CreateSimpleDoc();
         private void TableDocToolStripMenuItem_Click(object sender, EventArgs e) =>
-        CreateTableDoc();
+       CreateTableDoc();
         private void ChartDocToolStripMenuItem_Click(object sender, EventArgs e) =>
-        CreateChartDoc();
+       CreateChartDoc();
     }
 }
