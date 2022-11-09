@@ -1,14 +1,14 @@
-﻿using DataBaseLogic.BindingModels;
-using DataBaseLogic.Models;
-using DataBaseLogic.Storages;
-using DataBaseLogic.ViewModels;
+﻿using DataBase.BindingModels;
+using DataBase.Models;
+using DataBase.Storages;
+using DataBase.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBaseLogic.Logics
+namespace DataBase.Logics
 {
     public class OrderLogic
     {

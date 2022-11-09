@@ -1,5 +1,5 @@
-﻿using DataBaseLogic.BindingModels;
-using DataBaseLogic.Logics;
+﻿using DataBase.BindingModels;
+using DataBase.Logics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

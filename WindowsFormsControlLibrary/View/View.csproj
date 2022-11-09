@@ -10,14 +10,25 @@
 
   <ItemGroup>
     <None Remove="libraries\lab1COP.dll" />
-    <None Remove="libraries\WindowsFormsControlLibrary.dll" />
     <None Remove="libraries\WindowsFormsControlLibraryKutygin.dll" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="libraries\lab1COP.dll" />
-    <Content Include="libraries\WindowsFormsControlLibrary.dll" />
     <Content Include="libraries\WindowsFormsControlLibraryKutygin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataBase\DataBase.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="lab1COP">
+      <HintPath>..\..\..\..\COPchik\WindowsFormsControlLibrary\View\libraries\lab1COP.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsFormsControlLibraryKutygin">
+      <HintPath>..\..\..\..\COPchik\WindowsFormsControlLibrary\View\libraries\WindowsFormsControlLibraryKutygin.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

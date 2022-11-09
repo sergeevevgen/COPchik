@@ -1,6 +1,6 @@
-﻿using DataBaseLogic.BindingModels;
-using DataBaseLogic.Logics;
-using DataBaseLogic.ViewModels;
+﻿using DataBase.BindingModels;
+using DataBase.Logics;
+using DataBase.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

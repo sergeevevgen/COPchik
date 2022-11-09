@@ -47,7 +47,7 @@ namespace View
             toolStripItems[1] = menuItemProducts;
 
             //ControlsStripMenuItem.DropDownItems.AddRange(toolStripItems);
-            DropDownListControl d = new DropDownListControl();
+            //DropDownListControl d = new DropDownListControl();
             return dic;
 
         }
